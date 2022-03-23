@@ -1,13 +1,7 @@
 package com.gentritibishi.library;
 
-import com.gentritibishi.library.models.Book;
-import com.gentritibishi.library.models.BookHolder;
-import com.gentritibishi.library.models.Reader;
-import com.gentritibishi.library.models.Seat;
-import com.gentritibishi.library.repositories.BookHolderRepository;
-import com.gentritibishi.library.repositories.BookRepository;
-import com.gentritibishi.library.repositories.ReaderRepository;
-import com.gentritibishi.library.repositories.SeatRepository;
+import com.gentritibishi.library.models.*;
+import com.gentritibishi.library.repositories.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,8 +18,30 @@ public class LibraryApplication {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner(ReaderRepository readerRepository, SeatRepository seatRepository, BookHolderRepository bookHolderRepository, BookRepository bookRepository) {
+    CommandLineRunner commandLineRunner(ReaderRepository readerRepository,
+                                        SeatRepository seatRepository,
+                                        BookHolderRepository bookHolderRepository,
+                                        BookRepository bookRepository,
+                                        UserRepository userRepository) {
         return args -> {
+
+
+            User admin = new User(
+                    "admin",
+                    "admin",
+                    "admin@gmail.com",
+                    User.user_role.admin
+            );
+
+            User user = new User(
+                    "user",
+                    "user",
+                    "user@gmail.com",
+                    User.user_role.user
+            );
+
+            userRepository.save(admin);
+            userRepository.save(user);
 
             Book book = new Book(
                     Long.valueOf(123456789102L),
