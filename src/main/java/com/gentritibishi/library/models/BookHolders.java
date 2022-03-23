@@ -26,14 +26,14 @@ public class BookHolders {
             @JoinColumn(name = "book_name", referencedColumnName = "book_name"),
             @JoinColumn(name = "book_author", referencedColumnName = "book_author")
     })
-    private Book book_information;
+    private Book book_holder;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns({
             @JoinColumn(name = "first_name", referencedColumnName = "first_name"),
             @JoinColumn(name = "last_name", referencedColumnName = "last_name")
     })
-    private Reader full_name;
+    private Reader reader_holder;
 
     //Dhe user mbetet mu kry
 
