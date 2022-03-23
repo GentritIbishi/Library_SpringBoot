@@ -4,9 +4,9 @@ import javax.persistence.*;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
-@Entity(name = "BookHolders")
-@Table(name = "BookHolders")
-public class BookHolders {
+@Entity(name = "BookHolder")
+@Table(name = "BookHolder")
+public class BookHolder {
 
     @Id
     @SequenceGenerator(
@@ -39,6 +39,42 @@ public class BookHolders {
 
     //: - Getter and setter
 
+    public Long getHolder_book_id() {
+        return holder_book_id;
+    }
+
+    public void setHolder_book_id(Long holder_book_id) {
+        this.holder_book_id = holder_book_id;
+    }
+
+    public Book getBook_holder() {
+        return book_holder;
+    }
+
+    public void setBook_holder(Book book_holder) {
+        this.book_holder = book_holder;
+    }
+
+    public Reader getReader_holder() {
+        return reader_holder;
+    }
+
+    public void setReader_holder(Reader reader_holder) {
+        this.reader_holder = reader_holder;
+    }
+
 
     //: - Getter and setter END
+
+    //: - Constructor
+
+    public BookHolder(Book book_holder, Reader reader_holder) {
+        this.book_holder = book_holder;
+        this.reader_holder = reader_holder;
+    }
+
+    public BookHolder() {
+    }
+
+    //: - Constructor END
 }
